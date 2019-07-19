@@ -43,15 +43,16 @@ trait HasPermissions
                 $model = $this->getPermissionModel();
 
                 $permission = $model->where('slug', $permission)->firstOrFail();
+                // Check role permissions
+                if (method_exists($this, 'hasPermissionThroughRole') and $this->hasPermissionThroughRole($permission)) {
+                    return $this->hasPermissionThroughRole($permission);
+                }
             } catch (\Exception $e) {
                 // 
             }
         }
         
-        // Check role permissions
-        if (method_exists($this, 'hasPermissionThroughRole') and $this->hasPermissionThroughRole($permission)) {
-            return $this->hasPermissionThroughRole($permission);
-        }
+        
         
         // Check user permission
         if ($this->hasPermission($permission)) {
