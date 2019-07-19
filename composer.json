@@ -7,8 +7,15 @@
         "name": "Shea Lewis",
         "email": "shea.lewis89@gmail.com"
     }],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/devjaenqn/shinobi"
+        }
+    ],
     "require": {
-        "illuminate/support": "5.7.*|5.8.*"
+        "illuminate/support": "5.7.*|5.8.*",
+        "caffeinated/shinobi": "master"
     },
     "autoload": {
         "psr-4": {
