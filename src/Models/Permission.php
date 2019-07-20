@@ -9,7 +9,7 @@ use Caffeinated\Shinobi\Contracts\Permission as PermissionContract;
 
 class Permission extends Model implements PermissionContract
 {
-    use RefreshesPermissionCache;
+    //use RefreshesPermissionCache;
     
     /**
      * The attributes that are fillable via mass assignment.
