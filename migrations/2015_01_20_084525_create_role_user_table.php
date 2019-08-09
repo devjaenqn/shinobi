@@ -12,6 +12,7 @@ class CreateRoleUserTable extends Migration
      */
     public function up()
     {
+        /*
         $name = config('shinobi.tables.role_user');
 
         Schema::create($name, function (Blueprint $table) {
@@ -22,6 +23,7 @@ class CreateRoleUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+        */
     }
 
     /**
@@ -31,8 +33,8 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        $name = config('shinobi.tables.role_user');
+        //$name = config('shinobi.tables.role_user');
 
-        Schema::drop($name);
+        //Schema::drop($name);
     }
 }

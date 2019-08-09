@@ -8,6 +8,7 @@ class CreatePermissionUserTable extends Migration
 {
     public function up()
     {
+        /*
         $name = config('shinobi.tables.permission_user');
 
         Schema::create($name, function (Blueprint $table) {
@@ -18,6 +19,7 @@ class CreatePermissionUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+        */
     }
 
     /**
@@ -27,9 +29,9 @@ class CreatePermissionUserTable extends Migration
      */
     public function down()
     {
-        $name = config('shinobi.tables.permission_user');
+        //$name = config('shinobi.tables.permission_user');
 
-        Schema::drop($name);
+        //Schema::drop($name);
     }
 
 }
