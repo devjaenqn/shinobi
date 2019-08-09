@@ -12,6 +12,7 @@ class CreatePermissionRoleTable extends Migration
      */
     public function up()
     {
+        /*
         $name = config('shinobi.tables.permission_role');
 
         Schema::create($name, function (Blueprint $table) {
@@ -22,6 +23,7 @@ class CreatePermissionRoleTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });
+        */
     }
 
     /**
@@ -31,8 +33,8 @@ class CreatePermissionRoleTable extends Migration
      */
     public function down()
     {
-        $name = config('shinobi.tables.permission_role');
+        //$name = config('shinobi.tables.permission_role');
 
-        Schema::drop($name);
+        //Schema::drop($name);
     }
 }
