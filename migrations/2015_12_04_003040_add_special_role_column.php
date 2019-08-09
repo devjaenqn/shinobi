@@ -11,11 +11,13 @@ class AddSpecialRoleColumn extends Migration
      */
     public function up()
     {
+        /*
         $name = config('shinobi.tables.roles');
 
         Schema::table($name, function ($table) {
             $table->enum('special', ['all-access', 'no-access'])->nullable();
         });
+        */
     }
 
     /**
@@ -25,10 +27,12 @@ class AddSpecialRoleColumn extends Migration
      */
     public function down()
     {
+        /*
         $name = config('shinobi.tables.roles');
 
         Schema::table($name, function ($table) {
             $table->dropColumn('special');
         });
+        */
     }
 }
