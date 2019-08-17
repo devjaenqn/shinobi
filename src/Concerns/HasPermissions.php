@@ -22,7 +22,7 @@ trait HasPermissions
      * The mothergoose check. Runs through each scenario provided
      * by Shinobi - checking for special flags, role permissions, and
      * individual user permissions; in that order.
-     * 
+     *
      * @param  Permission|String  $permission
      * @return boolean
      */
@@ -36,7 +36,7 @@ trait HasPermissions
         if ((method_exists($this, 'hasPermissionFlags') and $this->hasPermissionFlags())) {
             return $this->hasPermissionThroughFlag();
         }
-        
+
         // Fetch permission if we pass through a string
         if (is_string($permission)) {
             try {
@@ -48,12 +48,12 @@ trait HasPermissions
                     return $this->hasPermissionThroughRole($permission);
                 }
             } catch (\Exception $e) {
-                // 
+                //
             }
         }
-        
-        
-        
+
+
+
         // Check user permission
         if ($this->hasPermission($permission)) {
             return true;
@@ -63,13 +63,29 @@ trait HasPermissions
     }
 
     /**
+     * Checks if the model has any of the given permission assigned.
+     *
+     * @param  array  $roles
+     * @return bool
+     */
+    public function hasAnyPermissionTo(...$permissions): bool
+    {
+        foreach ($permissions as $permission) {
+            if ($this->hasPermissionTo($permission)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    /**
      * Give the specified permissions to the model.
-     * 
+     *
      * @param  array  $permissions
      * @return self
      */
     public function givePermissionTo(...$permissions): self
-    {        
+    {
         $permissions = array_flatten($permissions);
         $permissions = $this->getPermissions($permissions);
 
@@ -84,7 +100,7 @@ trait HasPermissions
 
     /**
      * Revoke the specified permissions from the model.
-     * 
+     *
      * @param  array  $permissions
      * @return self
      */
@@ -100,7 +116,7 @@ trait HasPermissions
 
     /**
      * Sync the specified permissions against the model.
-     * 
+     *
      * @param  array  $permissions
      * @return self
      */
@@ -116,7 +132,7 @@ trait HasPermissions
 
     /**
      * Get the specified permissions.
-     * 
+     *
      * @param  array  $permissions
      * @return Permission
      */
@@ -137,7 +153,7 @@ trait HasPermissions
 
     /**
      * Checks if the user has the given permission assigned.
-     * 
+     *
      * @param  \Caffeinated\Shinobi\Models\Permission  $permission
      * @return boolean
      */
@@ -154,7 +170,7 @@ trait HasPermissions
 
     /**
      * Get the model instance responsible for permissions.
-     * 
+     *
      * @return \Caffeinated\Shinobi\Contracts\Permission|\Illuminate\Database\Eloquent\Collection
      */
     protected function getPermissionModel()
